@@ -1,29 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Stack(
-          fit: StackFit.expand,
-          children: [
-            Image.asset(
-              'assets/background.jpg',
-              fit: BoxFit.cover,
-            ),
-            LoginPage(),
-          ],
-        ),
-      ),
-    );
-  }
-}
+import 'mechanics.dart';
 
 class LoginPage extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
@@ -56,7 +33,10 @@ class LoginPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    prefixIcon: Icon(FontAwesomeIcons.envelope),
+                    prefixIcon: Icon(
+                      FontAwesomeIcons.envelope,
+                      color: Colors.white,
+                    ),
                     filled: true,
                     fillColor: Colors.blueAccent.withOpacity(0.2),
                     border: OutlineInputBorder(
@@ -84,7 +64,10 @@ class LoginPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    prefixIcon: Icon(FontAwesomeIcons.lock),
+                    prefixIcon: Icon(
+                      FontAwesomeIcons.lock,
+                      color: Colors.white,
+                    ),
                     filled: true,
                     fillColor: Colors.blueAccent.withOpacity(0.2),
                     border: OutlineInputBorder(
@@ -96,7 +79,10 @@ class LoginPage extends StatelessWidget {
               SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () {
-                  // Implement login logic
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MechanicsPage()),
+                  );
                 },
                 child: Text('Login'),
               ),
