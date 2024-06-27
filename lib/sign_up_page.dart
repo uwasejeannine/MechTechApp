@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _SignUpPageState createState() => _SignUpPageState();
 }
 
@@ -24,12 +27,12 @@ class _SignUpPageState extends State<SignUpPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'MechTech',
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
         ),
         backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
         elevation: 0,
       ),
       body: Padding(
@@ -40,12 +43,15 @@ class _SignUpPageState extends State<SignUpPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text(
+                const Text(
                   'Register',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black),
+                  style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 _buildTextField(_fullNameController, 'Full Names'),
                 _buildTextField(_insuranceController, 'Insurance Company'),
                 _buildTextField(_nationalIdController, 'National ID'),
@@ -57,22 +63,22 @@ class _SignUpPageState extends State<SignUpPage> {
                 _buildTextField(_districtController, 'District'),
                 _buildTextField(_sectorController, 'Sector'),
                 _buildTextField(_stateController, 'State'),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState?.validate() ?? false) {
                       // Sign up logic
                     }
                   },
-                  child: Text('Sign up'),
+                  child: const Text('Sign up'),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 TextButton(
                   onPressed: () {
                     // Navigate to sign in page
                     Navigator.pop(context);
                   },
-                  child: Text('Already have an account? Sign in'),
+                  child: const Text('Already have an account? Sign in'),
                 ),
               ],
             ),
@@ -89,7 +95,7 @@ class _SignUpPageState extends State<SignUpPage> {
         controller: controller,
         decoration: InputDecoration(
           labelText: label,
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
         ),
         validator: (value) {
           if (value == null || value.isEmpty) {

@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'signup.dart';
 import 'login.dart';
-import 'sign_in_page.dart';
 
 void main() {
-  runApp(MechTechApp());
+  runApp(const MechTechApp());
 }
 
 class MechTechApp extends StatelessWidget {
+  const MechTechApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,13 +16,16 @@ class MechTechApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MechTechHomePage(),
+      home: const MechTechHomePage(),
     );
   }
 }
 
 class MechTechHomePage extends StatefulWidget {
+  const MechTechHomePage({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _MechTechHomePageState createState() => _MechTechHomePageState();
 }
 
@@ -35,7 +39,7 @@ class _MechTechHomePageState extends State<MechTechHomePage> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: Color(0xFF2596BE),
+        color: const Color(0xFF2596BE),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -45,12 +49,12 @@ class _MechTechHomePageState extends State<MechTechHomePage> {
                 height: 150,
                 width: 150,
               ),
-              SizedBox(height: 16),
-              Text(
+              const SizedBox(height: 16),
+              const Text(
                 'Welcome back to MechTech',
                 style: TextStyle(fontSize: 20, color: Colors.white),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(
@@ -58,9 +62,9 @@ class _MechTechHomePageState extends State<MechTechHomePage> {
                     MaterialPageRoute(builder: (context) => LoginPage()),
                   );
                 },
-                child: Text('Login'),
+                child: const Text('Login'),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               OutlinedButton(
                 onPressed: () {
                   Navigator.push(
@@ -68,7 +72,7 @@ class _MechTechHomePageState extends State<MechTechHomePage> {
                     MaterialPageRoute(builder: (context) => SignupPage()),
                   );
                 },
-                child: Text('Sign Up'),
+                child: const Text('Sign Up'),
               ),
             ],
           ),

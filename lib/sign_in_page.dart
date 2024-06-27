@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'sign_up_page.dart';
 
 class SignInPage extends StatefulWidget {
+  const SignInPage({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _SignInPageState createState() => _SignInPageState();
 }
 
@@ -16,12 +19,12 @@ class _SignInPageState extends State<SignInPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'MechTech',
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
         ),
         backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
         elevation: 0,
       ),
       body: Padding(
@@ -31,15 +34,15 @@ class _SignInPageState extends State<SignInPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text(
+              const Text(
                 'Hello, Welcome Back!',
                 style: TextStyle(fontSize: 24),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextFormField(
                 controller: _emailController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Phone or Email',
                   border: OutlineInputBorder(),
                 ),
@@ -50,11 +53,11 @@ class _SignInPageState extends State<SignInPage> {
                   return null;
                 },
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               TextFormField(
                 controller: _passwordController,
                 obscureText: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Password',
                   border: OutlineInputBorder(),
                 ),
@@ -65,32 +68,32 @@ class _SignInPageState extends State<SignInPage> {
                   return null;
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState?.validate() ?? false) {
                     // Sign in logic
                   }
                 },
-                child: Text('Sign in'),
+                child: const Text('Sign in'),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
                   // Google Sign in logic
                 },
-                child: Text('Sign in with your Google account'),
+                child: const Text('Sign in with your Google account'),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextButton(
                 onPressed: () {
                   // Navigate to sign up page
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => SignUpPage()),
+                    MaterialPageRoute(builder: (context) => const SignUpPage()),
                   );
                 },
-                child: Text("Don't have an account? Sign up"),
+                child: const Text("Don't have an account? Sign up"),
               ),
             ],
           ),
