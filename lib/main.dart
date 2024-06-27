@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'login.dart';
 import 'signup.dart';
+import 'login.dart';
 
 void main() {
   runApp(MechTechApp());
@@ -29,32 +29,26 @@ class _MechTechHomePageState extends State<MechTechHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('MechTech Project'),
+        automaticallyImplyLeading: false, // Removes the back button
+        //title: Text('MechTech Project'), // Commented out to remove the title
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        color: Color(0xFF2596BE),
+        child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                'MechTech',
-                style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blue,
-                ),
-              ),
-              SizedBox(height: 16),
               Image.network(
-                'https://www.shutterstock.com/image-photo/african-female-mechanic-working-underneath-260nw-2114899571.jpg',
+                '../images/MechTech 1.png',
                 height: 150,
                 width: 150,
               ),
               SizedBox(height: 16),
               Text(
                 'Welcome back to MechTech',
-                style: TextStyle(fontSize: 20, color: Colors.blue),
+                style: TextStyle(fontSize: 20, color: Colors.white),
               ),
               SizedBox(height: 16),
               ElevatedButton(
@@ -80,26 +74,7 @@ class _MechTechHomePageState extends State<MechTechHomePage> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.info),
-            label: 'Info',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.contact_mail),
-            label: 'Contact',
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Icon(Icons.add),
-      ),
+      // Removed bottomNavigationBar and floatingActionButton
     );
   }
 }
