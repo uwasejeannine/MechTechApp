@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'signup.dart';
 import 'login.dart';
+import 'sign_in_page.dart';
 
 void main() {
   runApp(MechTechApp());
@@ -30,7 +31,6 @@ class _MechTechHomePageState extends State<MechTechHomePage> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false, // Removes the back button
-        //title: Text('MechTech Project'), // Commented out to remove the title
       ),
       body: Container(
         width: double.infinity,
@@ -41,7 +41,7 @@ class _MechTechHomePageState extends State<MechTechHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.network(
-                '../images/MechTech 1.png',
+                'https://example.com/images/MechTech1.png', // Use a valid image URL
                 height: 150,
                 width: 150,
               ),
@@ -74,7 +74,6 @@ class _MechTechHomePageState extends State<MechTechHomePage> {
           ),
         ),
       ),
-      // Removed bottomNavigationBar and floatingActionButton
     );
   }
 }
