@@ -2,7 +2,6 @@
 
 ## Introduction
 MechTech is an innovative mobile application designed to connect drivers with qualified mechanics quickly and efficiently. This app aims to improve the quality of life for drivers in Rwanda, particularly in Kigali, by providing prompt, affordable, and transparent car repair services.
-![Image](./images/logo.png)
 
 ## Problem Background
 Drivers in Kigali often face significant delays and inconveniences when their vehicles break down due to ineffective communication and coordination between drivers and mechanics. This app addresses:
@@ -15,7 +14,6 @@ Drivers in Kigali often face significant delays and inconveniences when their ve
 
 ## Solution
 MechTech connects drivers with qualified mechanics quickly and efficiently. The app allows users to schedule services, track mechanic locations, and access fair pricing and reviews. This project aims to revolutionize the car repair industry in Rwanda by providing a humanitarian solution that can generate substantial profits.
-![workers](./images/mechanic%20profiles.png)
 
 ## Major Functions
 - **Service Scheduling:** Book a mechanic by selecting the required service and location.
@@ -24,7 +22,6 @@ MechTech connects drivers with qualified mechanics quickly and efficiently. The 
 - **Online Repair Records:** Access online records of all repairs and maintenance.
 - **Maintenance Notifications:** Receive reminders for routine maintenance tasks.
 - **Emergency Assistance:** Quickly dispatch the nearest available mechanic in urgent situations.
-![Example Image](./images/services%20schedules.png)
 
 
 ## Installation
