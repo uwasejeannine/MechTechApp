@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class IntroPage1 extends StatelessWidget {
+  const IntroPage1({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,11 +14,11 @@ class IntroPage1 extends StatelessWidget {
             Container(
               width: 100,
               height: 100,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
                 shape: BoxShape.circle,
               ),
-              child: Center(
+              child: const Center(
                 child: Text(
                   'MTN',
                   style: TextStyle(
@@ -26,8 +28,8 @@ class IntroPage1 extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 20),
-            Text(
+            const SizedBox(height: 20),
+            const Text(
               'MECHTECH',
               style: TextStyle(
                 fontSize: 24,
