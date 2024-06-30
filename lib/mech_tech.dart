@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widgetassignment/color_schema.dart';
+import 'package:widgetassignment/login.dart';
 import 'package:widgetassignment/solid_button.dart';
 
 class MechTechHomePage extends StatefulWidget {
@@ -33,12 +34,13 @@ class _MechTechHomePageState extends State<MechTechHomePage> {
               const SizedBox(height: 16),
               const Text(
                 'You are one stop away from getting help from qualified  mechanics near you!...',
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 14,
                   color: AppColors.textDark,
                 ),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 25),
               CustomButton(
                 onTap: () {
                   // Navigate to a new page or perform an action
@@ -47,14 +49,15 @@ class _MechTechHomePageState extends State<MechTechHomePage> {
                 backgroundColor: AppColors.primaryColor,
                 buttonText: 'Sign Up',
               ),
-              const SizedBox(height: 15),
+              const SizedBox(height: 10),
               CustomButton(
                 onTap: () {
-                  // Navigate to a new page or perform an action
-                  print("Button tapped");
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const LoginPage(),
+                  ));
                 },
                 backgroundColor: AppColors.textDark,
-                buttonText: 'Sign Up',
+                buttonText: 'Sign In',
               ),
               const SizedBox(height: 8),
             ],
