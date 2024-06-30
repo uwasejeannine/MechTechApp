@@ -3,6 +3,8 @@ import 'package:widgetassignment/color_schema.dart';
 import 'package:widgetassignment/custom_textField.dart';
 import 'package:widgetassignment/solid_button.dart';
 
+import 'signin.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -126,14 +128,14 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
             CustomButton(
               onTap: () {
                 // Navigate to a new page or perform an action
                 print("Button tapped");
               },
               backgroundColor: AppColors.primaryColor,
-              buttonText: 'Sign Up',
+              buttonText: 'Sign In',
             ),
             const SizedBox(height: 10),
             CustomButton(
@@ -155,7 +157,11 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 const SizedBox(width: 10),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const RegisterPage(),
+                    ));
+                  },
                   child: const Text(
                     'Sign Up',
                     style: TextStyle(
