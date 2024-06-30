@@ -9,7 +9,8 @@ class MechanicDetailPage extends StatelessWidget {
   final String capabilities;
   final String imageUrl;
 
-  MechanicDetailPage({
+  const MechanicDetailPage({
+    super.key,
     required this.name,
     required this.type,
     required this.timeAvailable,
@@ -26,18 +27,18 @@ class MechanicDetailPage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        title: Text(
+        title: const Text(
           'Your Full Names',
           style: TextStyle(color: Colors.black),
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.notifications, color: Colors.black),
+            icon: const Icon(Icons.notifications, color: Colors.black),
             onPressed: () {},
           ),
         ],
@@ -53,43 +54,43 @@ class MechanicDetailPage extends StatelessWidget {
                 backgroundImage: NetworkImage(imageUrl),
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Center(
               child: Text(
                 name,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Center(
               child: Text(
                 type,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16,
                   color: Colors.grey,
                 ),
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Text('Time available: $timeAvailable'),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text('Location: $location'),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text('Work: $workDescription'),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text('What I can do: $capabilities'),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Center(
               child: ElevatedButton(
                 onPressed: () {},
-                child: Text('Reschedule'),
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.white,
                   backgroundColor: Colors.blueAccent,
                 ),
+                child: const Text('Reschedule'),
               ),
             ),
           ],
@@ -99,7 +100,7 @@ class MechanicDetailPage extends StatelessWidget {
         color: Colors.black,
         height: 40,
         width: 320,
-        child: Row(
+        child: const Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Icon(

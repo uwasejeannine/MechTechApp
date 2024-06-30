@@ -3,10 +3,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'mechanic_detail_page.dart'; // Import your MechanicDetailPage file
 
 void main() {
-  runApp(LoginPage());
+  runApp(const LoginPage());
 }
 
 class LoginPage extends StatelessWidget {
+  const LoginPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,12 +16,14 @@ class LoginPage extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MechanicsPage(),
+      home: const MechanicsPage(),
     );
   }
 }
 
 class MechanicsPage extends StatelessWidget {
+  const MechanicsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +61,7 @@ class MechanicsPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            Row(
+            const Row(
               children: [
                 Expanded(
                   child: MechanicCard(
@@ -69,7 +73,7 @@ class MechanicsPage extends StatelessWidget {
                         '../images/Ellipse 9 (1).png', // Replace with your image URL
                   ),
                 ),
-                const SizedBox(width: 10),
+                SizedBox(width: 10),
                 Expanded(
                   child: MechanicCard(
                     name: 'Paul Mitchell',
@@ -99,13 +103,13 @@ class MechanicsPage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 20),
-            MechanicListTile(
+            const MechanicListTile(
               name: 'Mukamurisa Leonsi',
               type: 'Cra Mechanic',
               imageUrl:
                   '../images/Ellipse 8.png', // Replace with your image URL
             ),
-            MechanicListTile(
+            const MechanicListTile(
               name: 'Dr. Mukamurisa Leonsi',
               type: 'Car Mechanic',
               imageUrl:
@@ -150,7 +154,7 @@ class MechanicCard extends StatelessWidget {
   final String type;
   final String imageUrl;
 
-  MechanicCard({
+  const MechanicCard({super.key, 
     required this.name,
     required this.time,
     required this.date,
@@ -173,7 +177,7 @@ class MechanicCard extends StatelessWidget {
         ],
         color: Colors.white,
         border: Border.all(
-          color: Color.fromARGB(255, 129, 166, 253),
+          color: const Color.fromARGB(255, 129, 166, 253),
           width: 2,
         ),
       ),
@@ -235,7 +239,7 @@ class MechanicCard extends StatelessWidget {
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromARGB(255, 72, 111, 196),
+                        backgroundColor: const Color.fromARGB(255, 72, 111, 196),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
@@ -264,7 +268,7 @@ class MechanicListTile extends StatelessWidget {
   final String type;
   final String imageUrl;
 
-  MechanicListTile({
+  const MechanicListTile({super.key, 
     required this.name,
     required this.type,
     required this.imageUrl,
