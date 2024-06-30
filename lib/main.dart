@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:widgetassignment/color_schema.dart';
 import 'mech_tech.dart';
+=======
+import 'signup.dart';
+import 'mechanic_book.dart';
+>>>>>>> 65cf92e (add the change of name)
 
 void main() {
   runApp(const MechTechApp());
