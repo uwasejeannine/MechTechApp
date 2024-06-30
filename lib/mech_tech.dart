@@ -59,7 +59,6 @@ class _MechTechHomePageState extends State<MechTechHomePage> {
                 backgroundColor: AppColors.textDark,
                 buttonText: 'Sign In',
               ),
-              const SizedBox(height: 8),
             ],
           ),
         ),
