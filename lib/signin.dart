@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:widgetassignment/color_schema.dart';
 import 'package:widgetassignment/custom_textField.dart';
-import 'package:widgetassignment/login.dart';
+import 'package:widgetassignment/signup.dart';
 import 'package:widgetassignment/solid_button.dart';
 
 class RegisterPage extends StatefulWidget {

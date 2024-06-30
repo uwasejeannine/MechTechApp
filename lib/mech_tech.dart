@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widgetassignment/color_schema.dart';
-import 'package:widgetassignment/login.dart';
+import 'package:widgetassignment/signup.dart';
 import 'package:widgetassignment/signin.dart';
 import 'package:widgetassignment/solid_button.dart';
 
@@ -20,7 +20,7 @@ class _MechTechHomePageState extends State<MechTechHomePage> {
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("images/background.png"),
-            fit: BoxFit.cover,
+            alignment: Alignment.topRight,
           ),
         ),
         child: Center(
@@ -28,7 +28,7 @@ class _MechTechHomePageState extends State<MechTechHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                "images/mech.png",
+                "images/logo.png",
                 width: size.width * .6,
                 height: 150,
               ),
@@ -45,7 +45,8 @@ class _MechTechHomePageState extends State<MechTechHomePage> {
               CustomButton(
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const RegisterPage(),
+                    builder: (context) =>
+                        RegisterPage(), // Replace with your SignupPage class
                   ));
                 },
                 backgroundColor: AppColors.primaryColor,
@@ -61,6 +62,7 @@ class _MechTechHomePageState extends State<MechTechHomePage> {
                 backgroundColor: AppColors.textDark,
                 buttonText: 'Sign In',
               ),
+              const SizedBox(height: 8),
             ],
           ),
         ),
