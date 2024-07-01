@@ -46,7 +46,7 @@ class _MechTechHomePageState extends State<MechTechHomePage> {
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) =>
-                        RegisterPage(), // Replace with your SignupPage class
+                        const RegisterPage(), // Replace with your SignupPage class
                   ));
                 },
                 backgroundColor: AppColors.primaryColor,

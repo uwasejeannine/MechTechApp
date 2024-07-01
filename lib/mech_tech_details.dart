@@ -3,17 +3,16 @@ import 'package:widgetassignment/color_schema.dart';
 import 'mech_tech.dart'; // Import MechTechHomePage
 
 class MechTechDetails extends StatelessWidget {
-  const MechTechDetails({Key? key}) : super(key: key);
+  const MechTechDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.sizeOf(context);
     return Scaffold(
-      backgroundColor: Colors.white, // Set background color to white
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("images/background.png"),
-            alignment: Alignment.topRight, // Align image to the top right
           ),
         ),
         child: SafeArea(
@@ -25,19 +24,16 @@ class MechTechDetails extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Row(
-                      children: [
-                        Icon(Icons.build, size: 24, color: Colors.black),
-                        SizedBox(width: 8),
-                        Text(
-                          'MECHTECH',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ],
+                    Padding(
+                      padding: EdgeInsets.only(
+                        left: size.width * .1,
+                        top: 35,
+                      ),
+                      child: Image.asset(
+                        "images/logo_min.png",
+                        width: size.width * .6,
+                        height: 30,
+                      ),
                     ),
                     const SizedBox(height: 20),
                     const Text(
