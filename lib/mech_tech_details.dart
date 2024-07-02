@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:widgetassignment/color_schema.dart';
 import 'mech_tech.dart'; // Import MechTechHomePage
 
 class MechTechDetails extends StatelessWidget {

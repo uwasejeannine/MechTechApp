@@ -5,7 +5,6 @@ import 'package:widgetassignment/color_schema.dart';
 import 'package:widgetassignment/mech_tech.dart';
 
 import 'Onboarding/onboarding_view.dart';
-import 'mech_tech_details.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
