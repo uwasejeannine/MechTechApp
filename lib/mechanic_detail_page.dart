@@ -18,6 +18,7 @@ class MechanicDetailPage extends StatelessWidget {
     required this.workDescription,
     required this.capabilities,
     required this.imageUrl,
+    required String mechanicName,
   });
 
   @override
