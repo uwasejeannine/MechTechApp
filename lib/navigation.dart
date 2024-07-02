@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetassignment/color_schema.dart';
 import 'package:widgetassignment/history_page.dart';
 import 'package:widgetassignment/home_page.dart';
-import 'package:widgetassignment/mechanics.dart';
+import 'package:widgetassignment/Mechanics.dart';
 import 'package:widgetassignment/profile_page.dart';
 import 'package:widgetassignment/support_page.dart';
 
@@ -19,8 +19,8 @@ class _NavigationPageState extends State<NavigationPage> {
   int currentIndex = 2;
   final pages = [
     const SupportPage(),
-    const MechanicsPage(),
     const HomePage(),
+    const MechanicsPage(),
     const HistoryPage(),
     const ProfilePage(),
   ];
@@ -32,11 +32,11 @@ class _NavigationPageState extends State<NavigationPage> {
         size: 25,
       ),
       const Icon(
-        Icons.work,
+        Icons.home,
         size: 25,
       ),
       const Icon(
-        Icons.home,
+        Icons.work,
         size: 25,
       ),
       const Icon(

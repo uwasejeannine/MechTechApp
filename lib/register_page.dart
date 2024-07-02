@@ -21,10 +21,11 @@ class _RegisterPageState extends State<RegisterPage> {
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage("images/background.png"),
-              fit: BoxFit.cover,
+              fit: BoxFit.fill,
             ),
           ),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
                 padding: EdgeInsets.only(

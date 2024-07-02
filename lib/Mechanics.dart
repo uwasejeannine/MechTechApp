@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'mechanic_detail_page.dart'; // Make sure to import the detail page
 
 class MechanicsPage extends StatelessWidget {
   const MechanicsPage({super.key});
@@ -6,57 +7,12 @@ class MechanicsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Mechanics'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, // Two cards per row
-            crossAxisSpacing: 16.0,
-            mainAxisSpacing: 16.0,
-          ),
-          itemCount: 10,
-          itemBuilder: (BuildContext context, int index) {
-            return _buildMechanicCard(context);
-          },
-        ),
-      ),
-    );
-  }
-
-  Widget _buildMechanicCard(BuildContext context) {
-    return Card(
-      child: Stack(
-        children: [
-          Image.network(
-            'https://via.placeholder.com/100',
-            fit: BoxFit.cover,
-            width: double.infinity,
-            height: double.infinity,
-          ),
-          const Positioned(
-            top: 8.0,
-            left: 8.0,
-            child: RotatedBox(
-              quarterTurns: 3,
-              child: FittedBox(
-                child: SizedBox(
-                  width: 100.0,
-                  child: Text(
-                    'Mechanic Name',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
       body: Container(
         color: Colors.white, // Set overall background color
         child: Stack(
           children: [
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage("images/Group.png"),
                   alignment: Alignment.topRight,
@@ -67,9 +23,9 @@ class MechanicsPage extends StatelessWidget {
               top: 20,
               right: 20,
               child: Container(
-                padding: EdgeInsets.all(8),
-                decoration: BoxDecoration(),
-                child: Icon(
+                padding: const EdgeInsets.all(8),
+                decoration: const BoxDecoration(),
+                child: const Icon(
                   Icons.notifications,
                   color: Colors.black,
                   size: 24,
@@ -110,6 +66,7 @@ class MechanicsPage extends StatelessWidget {
                     children: [
                       Expanded(
                         child: _buildMechanicCard(
+                          context, // Pass the context
                           'Kate Marian',
                           'Car Mechanics',
                           '10 AM\nDec 23',
@@ -119,6 +76,7 @@ class MechanicsPage extends StatelessWidget {
                       SizedBox(width: 16),
                       Expanded(
                         child: _buildMechanicCard(
+                          context, // Pass the context
                           'Paul Mitchell',
                           'Car Mechanics',
                           '1:30 AM\nDec 23',
@@ -177,29 +135,11 @@ class MechanicsPage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home, color: Colors.white),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list, color: Colors.white),
-            label: 'List',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person, color: Colors.white),
-            label: 'Profile',
-          ),
-        ],
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white60,
-        backgroundColor: Colors.black,
-      ),
     );
   }
 
   Widget _buildMechanicCard(
+    BuildContext context, // Add context as a parameter
     String name,
     String specialty,
     String time,
@@ -237,7 +177,25 @@ class MechanicsPage extends StatelessWidget {
               SizedBox(height: 8),
               ElevatedButton(
                 child: Text('View'),
-                onPressed: () {},
+                onPressed: () {
+                  // Navigate to MechanicDetailPage with the required data
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MechanicDetailPage(
+                        name: name,
+                        type: specialty,
+                        timeAvailable: time,
+                        location: 'Your Location', // Provide actual data
+                        workDescription:
+                            'Work Description', // Provide actual data
+                        capabilities: 'Capabilities', // Provide actual data
+                        imageUrl:
+                            'https://example.com/image.png', // Provide actual image URL
+                      ),
+                    ),
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.lightBlue,
                   foregroundColor: Colors.white,
