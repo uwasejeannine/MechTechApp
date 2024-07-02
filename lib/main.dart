@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:widgetassignment/color_schema.dart'; // Assuming you have a color_schema.dart for colors
-import 'mech_tech.dart';
 import 'splash_screen.dart'; // Import your splash screen file
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MechTechApp());
 }
 
@@ -19,7 +19,7 @@ class MechTechApp extends StatelessWidget {
         fontFamily: 'StudioFeixenSansTRIAL',
       ),
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(), // Show splash screen first
+      home: const SplashScreen(),
     );
   }
 }
