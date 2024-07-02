@@ -8,7 +8,7 @@ void main() async {
 }
 
 class MechTechApp extends StatelessWidget {
-  const MechTechApp({Key? key}) : super(key: key);
+  const MechTechApp({super.key});
 
   @override
   Widget build(BuildContext context) {

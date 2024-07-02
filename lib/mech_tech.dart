@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:widgetassignment/color_schema.dart';
-import 'package:widgetassignment/signup.dart';
-import 'package:widgetassignment/signin.dart';
+import 'package:widgetassignment/login_page.dart';
+import 'package:widgetassignment/register_page.dart';
 import 'package:widgetassignment/solid_button.dart';
 
 class MechTechHomePage extends StatefulWidget {
