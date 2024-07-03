@@ -65,49 +65,59 @@ class ProfilePage extends StatelessWidget {
                   // Existing content ends here
 
                   // Centered profile information
-                  Center(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(height: 16), // Adding space
+                  Padding(
+                    padding: const EdgeInsets.only(top: 50.0),
+                    child: Center(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(height: 16), // Adding space
 
-                        _buildProfileItemRow(
-                            Icons.account_circle, 'Insurance company', 'UAP'),
-                        _buildProfileItemRow(Icons.credit_card, 'National ID',
-                            '12000867549672343'),
-                        _buildProfileItemRow(
-                            Icons.location_on, 'Nationality', 'Rwanda'),
-                        _buildProfileItemRow(Icons.person, 'Gender', 'Female'),
-                        _buildProfileItemRow(
-                            Icons.cake, 'Date of birth', '26, September 2000'),
-                        _buildProfileItemRow(Icons.phone, 'Phone number',
-                            'Add phone number here'), // Replace with actual phone number
-                        _buildProfileItemRow(
-                            Icons.location_city,
-                            'District, sector, and state',
-                            'Kimironko, Zindiro, Kigali, Rwanda'),
+                          _buildProfileItemRow(Icons.account_circle,
+                              'Insurance company\nUAP', ''),
+                          _buildProfileItemRow(Icons.credit_card,
+                              'National ID\n12000867549672343', ''),
+                          _buildProfileItemRow(
+                              Icons.location_on, 'Nationality\nRwanda', ''),
+                          _buildProfileItemRow(
+                              Icons.person, 'Gender\nFemale', ''),
+                          _buildProfileItemRow(Icons.cake,
+                              'Date of birth\n26, September 2000', ''),
+                          _buildProfileItemRow(
+                              Icons.phone,
+                              'Phone number\nAdd phone number here',
+                              ''), // Replace with actual phone number
+                          _buildProfileItemRow(
+                              Icons.location_city,
+                              'District, sector, and state\nKimironko, Zindiro, Kigali, Rwanda',
+                              ''),
 
-                        SizedBox(height: 16), // Adding space
+                          SizedBox(height: 16), // Adding space
 
-                        // Edit Button
-                        Container(
-                          width: double.infinity,
-                          padding: EdgeInsets.symmetric(vertical: 8),
-                          child: ElevatedButton(
-                            onPressed: () {
-                              // Handle edit button press
-                            },
-                            style: ElevatedButton.styleFrom(
-                              primary: Color(0xFF2596BE), // Background color
-                              onPrimary: Colors.white, // Text color
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
+                          // Edit Button
+                          Center(
+                            child: Container(
+                              width: 100,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  // Handle edit button press
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  foregroundColor: Colors.white,
+                                  backgroundColor: Color(0xFF2596BE),
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 8), // Text color
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(7),
+                                  ),
+                                ),
+                                child: Text('Edit',
+                                    style: TextStyle(fontSize: 14)),
                               ),
                             ),
-                            child: Text('Edit'),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ],
