@@ -33,15 +33,15 @@ class _NavigationPageState extends State<NavigationPage> {
         size: 25,
       ),
       const Icon(
-        Icons.work,
-        size: 25,
-      ),
-      const Icon(
         Icons.home,
         size: 25,
       ),
       const Icon(
-        Icons.notifications, // Changed icon to notifications
+        Icons.work,
+        size: 25,
+      ),
+      const Icon(
+        Icons.notifications,
         size: 25,
       ),
       const Icon(
