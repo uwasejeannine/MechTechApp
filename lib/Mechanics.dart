@@ -96,7 +96,7 @@ class MechanicsPage extends StatelessWidget {
                         ),
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.lightBlue,
+                          backgroundColor: Color(0xFF2596BE), // Adjusted color
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
