@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MechanicSchedulPage extends StatelessWidget {
-  const MechanicSchedulPage({Key? key});
+  const MechanicSchedulPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -144,10 +144,17 @@ class MechanicSchedulPage extends StatelessWidget {
                             ),
                             const SizedBox(height: 10),
                             Align(
-                              alignment: Alignment.centerRight,
+                              alignment: Alignment.center,
                               child: ElevatedButton.icon(
                                 onPressed: () {
-                                  // Action to message the mechanic
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => MessageYourMechanicPage(
+                                          mechanicName:
+                                              'Paul Mitchell'), // Passing the mechanic's name
+                                    ),
+                                  );
                                 },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: const Color(0xFF2596BE),
@@ -199,6 +206,62 @@ class MechanicSchedulPage extends StatelessWidget {
                     ),
                   ],
                 ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class MessageYourMechanicPage extends StatelessWidget {
+  final String mechanicName;
+
+  const MessageYourMechanicPage({Key? key, required this.mechanicName})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Message Your Mechanic'),
+        backgroundColor: const Color(0xFF2596BE),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Mechanic: $mechanicName',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 20),
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'Your Name',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 20),
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'Your Message',
+                border: OutlineInputBorder(),
+              ),
+              maxLines: 5,
+            ),
+            const SizedBox(height: 20),
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  // Implement the action to send the message
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF2596BE),
+                ),
+                child: Text('Send Message'),
               ),
             ),
           ],

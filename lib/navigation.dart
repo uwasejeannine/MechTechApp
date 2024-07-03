@@ -1,11 +1,11 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:widgetassignment/color_schema.dart';
-import 'package:widgetassignment/history_page.dart';
+import 'package:widgetassignment/notification_page.dart';
 import 'package:widgetassignment/home_page.dart';
 import 'package:widgetassignment/Mechanics.dart';
 import 'package:widgetassignment/profile_page.dart';
-import 'package:widgetassignment/support_page.dart';
+import 'package:widgetassignment/support_page.dart'; // Ensure this import matches your actual file name
 
 class NavigationPage extends StatefulWidget {
   const NavigationPage({super.key});
@@ -21,9 +21,10 @@ class _NavigationPageState extends State<NavigationPage> {
     const SupportPage(),
     const HomePage(),
     const MechanicsPage(),
-    const HistoryPage(),
+    const NotificationPage(), // Ensure this corresponds to the correct page
     const ProfilePage(),
   ];
+
   @override
   Widget build(BuildContext context) {
     final items = <Widget>[
@@ -32,15 +33,15 @@ class _NavigationPageState extends State<NavigationPage> {
         size: 25,
       ),
       const Icon(
-        Icons.home,
-        size: 25,
-      ),
-      const Icon(
         Icons.work,
         size: 25,
       ),
       const Icon(
-        Icons.history,
+        Icons.home,
+        size: 25,
+      ),
+      const Icon(
+        Icons.notifications, // Changed icon to notifications
         size: 25,
       ),
       const Icon(
@@ -50,24 +51,26 @@ class _NavigationPageState extends State<NavigationPage> {
     ];
 
     return Scaffold(
-        extendBody: true,
-        bottomNavigationBar: Theme(
-          data: Theme.of(context)
-              .copyWith(iconTheme: const IconThemeData(color: Colors.white)),
-          child: CurvedNavigationBar(
-            key: navigationKey,
-            backgroundColor: Colors.transparent,
-            color: AppColors.textDark,
-            buttonBackgroundColor: AppColors.textDark,
-            index: currentIndex,
-            items: items,
-            height: 65,
-            animationCurve: Curves.easeInOut,
-            animationDuration: const Duration(milliseconds: 300),
-            onTap: (currentIndex) =>
-                setState(() => this.currentIndex = currentIndex),
-          ),
+      extendBody: true,
+      bottomNavigationBar: Theme(
+        data: Theme.of(context).copyWith(
+          iconTheme: const IconThemeData(color: Colors.white),
         ),
-        body: pages[currentIndex]);
+        child: CurvedNavigationBar(
+          key: navigationKey,
+          backgroundColor: Colors.transparent,
+          color: AppColors.textDark,
+          buttonBackgroundColor: AppColors.textDark,
+          index: currentIndex,
+          items: items,
+          height: 65,
+          animationCurve: Curves.easeInOut,
+          animationDuration: const Duration(milliseconds: 300),
+          onTap: (currentIndex) =>
+              setState(() => this.currentIndex = currentIndex),
+        ),
+      ),
+      body: pages[currentIndex],
+    );
   }
 }

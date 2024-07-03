@@ -191,7 +191,7 @@ class MechanicsPage extends StatelessWidget {
                             'Work Description', // Provide actual data
                         capabilities: 'Capabilities', // Provide actual data
                         imageUrl:
-                            'https://example.com/image.png', // Provide actual image URL
+                            'assets/images/four.png', // Provide actual image URL
                       ),
                     ),
                   );
