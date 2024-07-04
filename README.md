@@ -1,3 +1,5 @@
+### Link to the video: https://vimeo.com/976377867/7dae6c1d75?share=copy
+
 # MechTech
 
 ## Introduction
@@ -68,4 +70,3 @@ MechTech connects drivers with qualified mechanics quickly and efficiently. The 
 ## Authors
 - Jeannine Uwase
 - Joshua Malong Maker
-- Magot Garang Alith
