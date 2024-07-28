@@ -3,6 +3,7 @@ import 'package:widgetassignment/color_schema.dart';
 import 'package:widgetassignment/custom_textField.dart';
 import 'package:widgetassignment/login_page.dart';
 import 'package:widgetassignment/solid_button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -12,6 +13,74 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  final _formKey = GlobalKey<FormState>();
+  final _auth = FirebaseAuth.instance;
+
+  final _nameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  bool _isLoading = false;
+  String? _successMessage;
+
+  Future<void> _register() async {
+    setState(() {
+      _isLoading = true;
+      _successMessage = null;
+    });
+
+    if (_formKey.currentState?.validate() ?? false) {
+      try {
+        await _auth.createUserWithEmailAndPassword(
+          email: _emailController.text.trim(),
+          password: _passwordController.text.trim(),
+        );
+        setState(() {
+          _successMessage = 'Registration successful!';
+        });
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const LoginPage()),
+        );
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'email-already-in-use') {
+          _showErrorDialog('The Email is already in use');
+        } else if (e.code == 'weak-password') {
+          _showErrorDialog('Weak password');
+        } else {
+          _showErrorDialog('Registration failed: ${e.message}');
+        }
+      } catch (e) {
+        _showErrorDialog('An error occurred: $e');
+      } finally {
+        setState(() {
+          _isLoading = false;
+        });
+      }
+    } else {
+      setState(() {
+        _isLoading = false;
+      });
+    }
+  }
+
+  void _showErrorDialog(String message) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Error'),
+          content: Text(message),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
@@ -38,9 +107,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   height: 30,
                 ),
               ),
-              const SizedBox(
-                height: 45,
-              ),
+              const SizedBox(height: 45),
               const Padding(
                 padding: EdgeInsets.only(left: 35.0),
                 child: Align(
@@ -55,7 +122,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
               ),
-              const SizedBox(height: 8), // Adjust the spacing as needed
+              const SizedBox(height: 8),
               const Padding(
                 padding: EdgeInsets.only(left: 35.0),
                 child: Align(
@@ -70,12 +137,26 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
               const SizedBox(height: 20),
+              if (_successMessage != null)
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    _successMessage!,
+                    style: const TextStyle(
+                      color: Colors.green,
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
               Form(
+                key: _formKey,
                 child: SizedBox(
                   width: size.width * .8,
                   child: Column(
                     children: [
                       CustomTextFormField(
+                        controller: _nameController,
                         labelText: 'Full Name',
                         validator: (name) {
                           if (name == null || name.isEmpty) {
@@ -88,13 +169,14 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                       const SizedBox(height: 20),
                       CustomTextFormField(
+                        controller: _emailController,
                         labelText: 'Email',
                         validator: (email) {
                           if (email == null || email.isEmpty) {
                             return 'Please enter an email address';
-                          } else if ((!RegExp(
+                          } else if (!RegExp(
                                   r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
-                              .hasMatch(email))) {
+                              .hasMatch(email)) {
                             return 'Please enter a valid email address';
                           }
                           return null;
@@ -107,7 +189,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           if (nationalId == null || nationalId.isEmpty) {
                             return 'Please enter your national ID';
                           } else if (nationalId.length < 12) {
-                            return 'Name should be at least 12 characters';
+                            return 'National ID should be at least 12 characters';
                           }
                           return null;
                         },
@@ -117,15 +199,16 @@ class _RegisterPageState extends State<RegisterPage> {
                         labelText: 'Telephone',
                         validator: (phoneNumber) {
                           if (phoneNumber == null || phoneNumber.isEmpty) {
-                            return 'Please enter your Phone number';
-                          } else if (phoneNumber.length < 12) {
-                            return 'Name should be at least 10 characters';
+                            return 'Please enter your phone number';
+                          } else if (phoneNumber.length < 10) {
+                            return 'Phone number should be at least 10 characters';
                           }
                           return null;
                         },
                       ),
                       const SizedBox(height: 20),
                       CustomTextFormField(
+                        controller: _passwordController,
                         labelText: 'Password',
                         obscureText: true,
                         validator: (password) {
@@ -148,16 +231,14 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
               ),
-
               const SizedBox(height: 20),
-              CustomButton(
-                onTap: () {
-                  // Navigate to a new page or perform an action
-                  print("Button tapped");
-                },
-                backgroundColor: AppColors.primaryColor,
-                buttonText: 'Sign Up',
-              ),
+              _isLoading
+                  ? const CircularProgressIndicator()
+                  : CustomButton(
+                      onTap: _register,
+                      backgroundColor: AppColors.primaryColor,
+                      buttonText: 'Sign Up',
+                    ),
               const SizedBox(height: 10),
               CustomButton(
                 onTap: () {},

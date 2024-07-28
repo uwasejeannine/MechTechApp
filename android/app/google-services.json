@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "841395424750",
+    "project_id": "mechtec-app",
+    "storage_bucket": "mechtec-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:841395424750:android:e9983c7c359508090ad2ff",
+        "android_client_info": {
+          "package_name": "com.example.widgetassignment"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCl0q4lXObbWyko3O8OwXPjOhBtt0oQbfk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

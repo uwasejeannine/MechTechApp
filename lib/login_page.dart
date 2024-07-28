@@ -3,6 +3,7 @@ import 'package:widgetassignment/color_schema.dart';
 import 'package:widgetassignment/custom_textField.dart';
 import 'package:widgetassignment/navigation.dart';
 import 'package:widgetassignment/solid_button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'register_page.dart';
 
@@ -14,6 +15,74 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final _formKey = GlobalKey<FormState>();
+  final _auth = FirebaseAuth.instance;
+
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  bool _isLoading = false;
+  String? _successMessage;
+
+  Future<void> _login() async {
+    setState(() {
+      _isLoading = true;
+      _successMessage = null;
+    });
+
+    if (_formKey.currentState?.validate() ?? false) {
+      try {
+        await _auth.signInWithEmailAndPassword(
+          email: _emailController.text.trim(),
+          password: _passwordController.text.trim(),
+        );
+        setState(() {
+          _successMessage = 'Successfully logged in!';
+        });
+        // Navigate to the home or dashboard page after login
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const NavigationPage()),
+        );
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'user-not-found') {
+          _showErrorDialog('User not found');
+        } else if (e.code == 'wrong-password') {
+          _showErrorDialog('Incorrect password');
+        } else {
+          _showErrorDialog('Login failed: ${e.message}');
+        }
+      } catch (e) {
+        _showErrorDialog('An error occurred: $e');
+      } finally {
+        setState(() {
+          _isLoading = false;
+        });
+      }
+    } else {
+      setState(() {
+        _isLoading = false;
+      });
+    }
+  }
+
+  void _showErrorDialog(String message) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Error'),
+          content: Text(message),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
@@ -38,15 +107,13 @@ class _LoginPageState extends State<LoginPage> {
                 height: 30,
               ),
             ),
-            const SizedBox(
-              height: 45,
-            ),
+            const SizedBox(height: 45),
             const Padding(
               padding: EdgeInsets.only(left: 35.0),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  'Welcome back',
+                  'Hi there! Welcome Back',
                   style: TextStyle(
                     color: AppColors.textDark,
                     fontSize: 24,
@@ -55,13 +122,13 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),
-            const SizedBox(height: 8), // Adjust the spacing as needed
+            const SizedBox(height: 8),
             const Padding(
               padding: EdgeInsets.only(left: 35.0),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  'Please add your information to continue...',
+                  'Please enter your credentials to sign in...',
                   style: TextStyle(
                     color: AppColors.slightDark,
                     fontSize: 12,
@@ -70,18 +137,32 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             const SizedBox(height: 20),
+            if (_successMessage != null)
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  _successMessage!,
+                  style: const TextStyle(
+                    color: Colors.green,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
             Form(
+              key: _formKey,
               child: SizedBox(
                 width: size.width * .8,
                 child: Column(
                   children: [
                     CustomTextFormField(
+                      controller: _emailController,
                       labelText: 'Email',
                       validator: (email) {
                         if (email == null || email.isEmpty) {
                           return 'Please enter an email address';
-                        } else if ((!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
-                            .hasMatch(email))) {
+                        } else if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
+                            .hasMatch(email)) {
                           return 'Please enter a valid email address';
                         }
                         return null;
@@ -89,19 +170,12 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     const SizedBox(height: 20),
                     CustomTextFormField(
+                      controller: _passwordController,
                       labelText: 'Password',
                       obscureText: true,
                       validator: (password) {
                         if (password == null || password.isEmpty) {
                           return 'Please enter a password';
-                        } else if (password.length < 6) {
-                          return 'Password must be at least 6 characters long';
-                        } else if (!password.contains(RegExp(r'[A-Z]'))) {
-                          return 'Password must contain at least one uppercase letter';
-                        } else if (!password.contains(RegExp(r'[a-z]'))) {
-                          return 'Password must contain at least one lowercase letter';
-                        } else if (!password.contains(RegExp(r'[0-9]'))) {
-                          return 'Password must contain at least one digit';
                         }
                         return null;
                       },
@@ -111,36 +185,15 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),
-
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Align(
-                alignment: Alignment.centerRight,
-                child: TextButton(
-                  onPressed: () {},
-                  child: const Text(
-                    'Forgot your password?',
-                    style: TextStyle(
-                      color: AppColors.primaryColor,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
+            const SizedBox(height: 20),
+            if (_isLoading)
+              const CircularProgressIndicator()
+            else
+              CustomButton(
+                onTap: _login,
+                backgroundColor: AppColors.primaryColor,
+                buttonText: 'Sign In',
               ),
-            ),
-            const SizedBox(height: 10),
-            CustomButton(
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) =>
-                      const NavigationPage(), // Replace with your MechanicsPage class
-                ));
-              },
-              backgroundColor: AppColors.primaryColor,
-              buttonText: 'Sign In',
-            ),
-
             const SizedBox(height: 10),
             CustomButton(
               onTap: () {},
@@ -152,7 +205,7 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
-                  'Don\'t have an Account?',
+                  'Not yet registered?',
                   style: TextStyle(
                     color: AppColors.textDark,
                     fontSize: 14,
@@ -177,6 +230,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ],
             ),
+            const SizedBox(height: 20),
           ],
         ),
       ),

@@ -38,17 +38,17 @@ class ProfilePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(16.0),
                     child: Row(
                       children: [
-                        CircleAvatar(
+                        const CircleAvatar(
                           radius: 40,
                           backgroundImage: AssetImage("images/five.png"),
                         ),
-                        SizedBox(width: 16),
+                        const SizedBox(width: 16),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
+                          children: const [
                             Text(
                               'Mutabazi John',
                               style: TextStyle(
@@ -69,9 +69,8 @@ class ProfilePage extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 50.0),
                     child: Center(
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(height: 16), // Adding space
+                          const SizedBox(height: 16), // Adding space
 
                           _buildProfileItemRow(Icons.account_circle,
                               'Insurance company\nUAP', ''),
@@ -92,7 +91,7 @@ class ProfilePage extends StatelessWidget {
                               'District, sector, and state\nKimironko, Zindiro, Kigali, Rwanda',
                               ''),
 
-                          SizedBox(height: 16), // Adding space
+                          const SizedBox(height: 16), // Adding space
 
                           // Edit Button
                           Center(
@@ -104,14 +103,14 @@ class ProfilePage extends StatelessWidget {
                                 },
                                 style: ElevatedButton.styleFrom(
                                   foregroundColor: Colors.white,
-                                  backgroundColor: Color(0xFF2596BE),
-                                  padding: EdgeInsets.symmetric(
+                                  backgroundColor: const Color(0xFF2596BE),
+                                  padding: const EdgeInsets.symmetric(
                                       vertical: 8), // Text color
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(7),
                                   ),
                                 ),
-                                child: Text('Edit',
+                                child: const Text('Edit',
                                     style: TextStyle(fontSize: 14)),
                               ),
                             ),
@@ -130,26 +129,31 @@ class ProfilePage extends StatelessWidget {
   }
 
   Widget _buildProfileItemRow(IconData icon, String label, String value) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          children: [
-            Icon(icon, size: 20),
-            SizedBox(width: 8),
-            Text(
-              label,
-              style: TextStyle(fontSize: 16),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Icon(icon, size: 20),
+          const SizedBox(width: 8),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  label,
+                  style: const TextStyle(fontSize: 16),
+                ),
+                if (value.isNotEmpty)
+                  Text(
+                    value,
+                    style: const TextStyle(fontSize: 16),
+                  ),
+              ],
             ),
-            SizedBox(width: 8),
-            Text(
-              value,
-              style: TextStyle(fontSize: 16),
-            ),
-          ],
-        ),
-        SizedBox(height: 8), // Adding space
-      ],
+          ),
+        ],
+      ),
     );
   }
 }

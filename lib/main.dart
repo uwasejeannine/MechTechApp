@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:widgetassignment/color_schema.dart'; // Assuming you have a color_schema.dart for colors
-import 'splash_screen.dart'; // Import your splash screen file
+import 'package:widgetassignment/color_schema.dart';
+import 'splash_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MechTechApp());
 }
 
@@ -15,7 +20,7 @@ class MechTechApp extends StatelessWidget {
     return MaterialApp(
       title: 'MechTech Project',
       theme: ThemeData(
-        primaryColor: AppColors.primaryColor, // Your primary color
+        primaryColor: AppColors.primaryColor,
         fontFamily: 'StudioFeixenSansTRIAL',
       ),
       debugShowCheckedModeBanner: false,
