@@ -167,6 +167,7 @@ class _LoginPageState extends State<LoginPage> {
                         }
                         return null;
                       },
+                      onChanged: (value) {},
                     ),
                     const SizedBox(height: 20),
                     CustomTextFormField(
@@ -180,6 +181,7 @@ class _LoginPageState extends State<LoginPage> {
                         return null;
                       },
                       showSuffixIcon: true,
+                      onChanged: (value) {},
                     ),
                   ],
                 ),

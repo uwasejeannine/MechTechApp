@@ -16,7 +16,8 @@ class CustomTextFormField extends StatelessWidget {
     this.controller,
     this.obscureText = false,
     this.isEmail = false,
-    this.showSuffixIcon = false, // Default value is false
+    this.showSuffixIcon = false,
+    required Function(dynamic value) onChanged, // Default value is false
   });
 
   @override

@@ -40,7 +40,6 @@ dependencies:
   # Add other Firebase packages as needed, for example:
   firebase_auth: ^4.0.0
   cloud_firestore: ^4.0.0
-  
 
 dev_dependencies:
   flutter_test:

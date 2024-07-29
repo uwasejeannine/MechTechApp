@@ -166,6 +166,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           }
                           return null;
                         },
+                        onChanged: (value) {},
                       ),
                       const SizedBox(height: 20),
                       CustomTextFormField(
@@ -181,6 +182,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           }
                           return null;
                         },
+                        onChanged: (value) {},
                       ),
                       const SizedBox(height: 20),
                       CustomTextFormField(
@@ -193,6 +195,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           }
                           return null;
                         },
+                        onChanged: (value) {},
                       ),
                       const SizedBox(height: 20),
                       CustomTextFormField(
@@ -205,6 +208,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           }
                           return null;
                         },
+                        onChanged: (value) {},
                       ),
                       const SizedBox(height: 20),
                       CustomTextFormField(
@@ -226,6 +230,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           return null;
                         },
                         showSuffixIcon: true,
+                        onChanged: (value) {},
                       ),
                     ],
                   ),
